@@ -9,7 +9,9 @@ import aed_assignment_1.employee_profile;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -65,8 +67,8 @@ public class View_employee extends javax.swing.JPanel {
         txt_level_v = new javax.swing.JTextField();
         txt_gender_v = new javax.swing.JTextField();
         txt_photo_v = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txt_search = new javax.swing.JTextField();
+        btn_search = new javax.swing.JButton();
 
         label_employee_View.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         label_employee_View.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -172,9 +174,14 @@ public class View_employee extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setText("type here..");
+        txt_search.setText("type here..");
 
-        jButton1.setText("Search");
+        btn_search.setText("Search");
+        btn_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -235,9 +242,9 @@ public class View_employee extends javax.swing.JPanel {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(205, 205, 205)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btn_search)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -246,8 +253,8 @@ public class View_employee extends javax.swing.JPanel {
                 .addComponent(label_employee_View)
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -331,6 +338,7 @@ public class View_employee extends javax.swing.JPanel {
      txt_cell_v.setText("");
      txt_email_v.setText("");
      txt_gender_v.setText("");
+     txt_photo_v.setIcon(null);
 
        
        
@@ -437,14 +445,23 @@ public class View_employee extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btn_updateActionPerformed
 
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) profile_tbl.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        profile_tbl.setRowSorter(tr );
+        tr.setRowFilter(RowFilter.regexFilter(txt_search.getText().trim()));
+        
+      
+    }//GEN-LAST:event_btn_searchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_view;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label_employee_View;
     private javax.swing.JLabel lbl_ID;
     private javax.swing.JLabel lbl_age;
@@ -467,6 +484,7 @@ public class View_employee extends javax.swing.JPanel {
     private javax.swing.JTextField txt_name_v;
     private javax.swing.JLabel txt_photo_v;
     private javax.swing.JTextField txt_poition_v;
+    private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_start_v;
     private javax.swing.JTextField txt_team_v;
     // End of variables declaration//GEN-END:variables
@@ -493,4 +511,6 @@ public class View_employee extends javax.swing.JPanel {
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
+     
+     
 }
