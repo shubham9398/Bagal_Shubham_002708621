@@ -110,6 +110,11 @@ public class employee_profile {
     public void setPosition(String position) {
         this.position = position;
     }
+    
+    @Override
+    public String toString(){
+        return start_date;
+    }
 
    
     

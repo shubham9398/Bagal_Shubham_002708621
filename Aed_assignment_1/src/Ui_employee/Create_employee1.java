@@ -4,6 +4,10 @@
  */
 package Ui_employee;
 
+import aed_assignment_1.employee_list;
+import aed_assignment_1.employee_profile;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shubhambagal
@@ -13,8 +17,12 @@ public class Create_employee1 extends javax.swing.JPanel {
     /**
      * Creates new form Create_employee1
      */
-    public Create_employee1() {
+    
+    employee_list e_list;
+    public Create_employee1(employee_list employee_list) {
         initComponents();
+        this.e_list = employee_list;
+        
     }
 
     /**
@@ -26,6 +34,7 @@ public class Create_employee1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gender_grp = new javax.swing.ButtonGroup();
         label_employee = new javax.swing.JLabel();
         lbl_name = new javax.swing.JLabel();
         lbl_ID = new javax.swing.JLabel();
@@ -77,50 +86,36 @@ public class Create_employee1 extends javax.swing.JPanel {
 
         lbl_photo.setText("Photo");
 
-        txt_name.setText("jTextField1");
-
-        txt_id.setText("jTextField1");
-
-        txt_age.setText("jTextField1");
         txt_age.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_ageActionPerformed(evt);
             }
         });
 
-        txt_start.setText("jTextField1");
-
-        txt_level.setText("jTextField1");
-
-        txt_team.setText("jTextField1");
         txt_team.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_teamActionPerformed(evt);
             }
         });
 
-        txt_poition.setText("jTextField1");
         txt_poition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_poitionActionPerformed(evt);
             }
         });
 
-        txt_cell.setText("jTextField1");
         txt_cell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cellActionPerformed(evt);
             }
         });
 
-        txt_email.setText("jTextField1");
         txt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_emailActionPerformed(evt);
             }
         });
 
-        txt_photo.setText("jTextField1");
         txt_photo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_photoActionPerformed(evt);
@@ -134,6 +129,7 @@ public class Create_employee1 extends javax.swing.JPanel {
             }
         });
 
+        gender_grp.add(radio_male);
         radio_male.setText("Male");
         radio_male.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +137,13 @@ public class Create_employee1 extends javax.swing.JPanel {
             }
         });
 
+        gender_grp.add(radio_female);
         radio_female.setText("Female");
+        radio_female.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_femaleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -201,13 +203,13 @@ public class Create_employee1 extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radio_female))
                             .addComponent(txt_age, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(label_employee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_employee, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_name)
@@ -254,7 +256,7 @@ public class Create_employee1 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_photo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_photo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(btn_create)
                 .addGap(32, 32, 32))
         );
@@ -286,15 +288,67 @@ public class Create_employee1 extends javax.swing.JPanel {
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
         // TODO add your handling code here:
+     String name = txt_name.getText()  ;
+     String gender;
+     String id=txt_id.getText();
+     int age = Integer.parseInt(txt_age.getText());
+     if(radio_female.isSelected()){
+          gender = "Female";
+     }
+     else{
+         gender = "Male";
+     }
+     String start_date = txt_start.getText();
+     String level= txt_level.getText();
+     String team_info = txt_team.getText();
+     String position = txt_poition.getText();
+     long phone = Integer.parseInt(txt_cell.getText());
+     String email = txt_email.getText();
+     
+     
+     employee_profile ep = e_list.addnewEmployee();
+     ep.setName(name);
+     ep.setAge(age);
+     ep.setId(id);
+     ep.setLevel(level);
+     ep.setStart_date(start_date);
+     ep.setTeam_info(team_info);
+     ep.setPosition(position);
+     ep.setPhone(phone);
+     ep.setEmail(email);
+     ep.setGender(gender);
+     
+     JOptionPane.showMessageDialog(this, "New Enployee Added");
+     
+     txt_name.setText("");
+     txt_id.setText("");
+     txt_age.setText("");
+     txt_start.setText("");
+     txt_level.setText("");
+     txt_team.setText("");
+     txt_poition.setText("");
+     txt_cell.setText("");
+     txt_email.setText("");
+     gender_grp.clearSelection();
+     
+     
+     
+        
+      
     }//GEN-LAST:event_btn_createActionPerformed
 
     private void radio_maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_maleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radio_maleActionPerformed
 
+    private void radio_femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_femaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radio_femaleActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_create;
+    private javax.swing.ButtonGroup gender_grp;
     private javax.swing.JLabel label_employee;
     private javax.swing.JLabel lbl_ID;
     private javax.swing.JLabel lbl_age;

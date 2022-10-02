@@ -49,6 +49,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         btn_view.setText("View Employees");
+        btn_view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -68,7 +73,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btn_create)
                 .addGap(32, 32, 32)
                 .addComponent(btn_view)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(597, Short.MAX_VALUE))
         );
 
         splitPlane.setLeftComponent(jPanel3);
@@ -77,11 +82,11 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 295, Short.MAX_VALUE)
+            .addGap(0, 818, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 740, Short.MAX_VALUE)
         );
 
         splitPlane.setRightComponent(jPanel4);
@@ -90,11 +95,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPlane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(splitPlane, javax.swing.GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPlane, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(splitPlane, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
         );
 
         pack();
@@ -102,9 +107,16 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
         // TODO add your handling code here:
-        Create_employee1 create_employee = new Create_employee1();
-        splitPlane.setRightComponent( create_employee);
+        Create_employee1 create_employee = new Create_employee1(employee_list);
+        splitPlane.setRightComponent( create_employee); 
     }//GEN-LAST:event_btn_createActionPerformed
+
+    private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
+        // TODO add your handling code here:
+        
+        View_employee view_employee = new View_employee(employee_list);
+        splitPlane.setRightComponent( view_employee); 
+    }//GEN-LAST:event_btn_viewActionPerformed
 
     /**
      * @param args the command line arguments

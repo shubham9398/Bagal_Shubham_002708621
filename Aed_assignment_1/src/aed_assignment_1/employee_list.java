@@ -29,6 +29,19 @@ public class employee_list {
     public void setEmployee_list(ArrayList<employee_profile> employee_list) {
         this.employee_list = employee_list;
     }
+    
+    public employee_profile addnewEmployee(){
+        employee_profile newEmployee = new employee_profile();
+        employee_list.add(newEmployee);
+       return newEmployee;
+        
+    }
+
+    public void deleteVitals(employee_profile select_profile) {
+        employee_list.remove(select_profile);
+        
+    }
+    
    
    
     
