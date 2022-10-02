@@ -6,7 +6,13 @@ package Ui_employee;
 
 import aed_assignment_1.employee_list;
 import aed_assignment_1.employee_profile;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -18,6 +24,7 @@ public class Create_employee1 extends javax.swing.JPanel {
      * Creates new form Create_employee1
      */
     
+    String path;
     employee_list e_list;
     public Create_employee1(employee_list employee_list) {
         initComponents();
@@ -56,10 +63,10 @@ public class Create_employee1 extends javax.swing.JPanel {
         txt_poition = new javax.swing.JTextField();
         txt_cell = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
-        txt_photo = new javax.swing.JTextField();
         btn_create = new javax.swing.JButton();
         radio_male = new javax.swing.JRadioButton();
         radio_female = new javax.swing.JRadioButton();
+        txt_photo = new javax.swing.JButton();
 
         label_employee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_employee.setText("Create Employee Profile");
@@ -116,12 +123,6 @@ public class Create_employee1 extends javax.swing.JPanel {
             }
         });
 
-        txt_photo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_photoActionPerformed(evt);
-            }
-        });
-
         btn_create.setText("Save");
         btn_create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +146,13 @@ public class Create_employee1 extends javax.swing.JPanel {
             }
         });
 
+        txt_photo.setText("Browse");
+        txt_photo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_photoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,10 +161,11 @@ public class Create_employee1 extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lbl_photo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_photo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_photo)
+                        .addGap(59, 59, 59))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_email)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
@@ -252,11 +261,11 @@ public class Create_employee1 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_email))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_photo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_photo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_photo)
+                    .addComponent(txt_photo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(btn_create)
                 .addGap(32, 32, 32))
         );
@@ -281,10 +290,6 @@ public class Create_employee1 extends javax.swing.JPanel {
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_emailActionPerformed
-
-    private void txt_photoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_photoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_photoActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
         // TODO add your handling code here:
@@ -317,8 +322,14 @@ public class Create_employee1 extends javax.swing.JPanel {
      ep.setPhone(phone);
      ep.setEmail(email);
      ep.setGender(gender);
+     if(path== null){
+         JOptionPane.showMessageDialog(this, "Please Add Image..");
+     }
+    
+     ep.setPhoto(path);
      
-     JOptionPane.showMessageDialog(this, "New Enployee Added");
+     
+     JOptionPane.showMessageDialog(this, "New Enployee Added " + path);
      
      txt_name.setText("");
      txt_id.setText("");
@@ -345,6 +356,32 @@ public class Create_employee1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_radio_femaleActionPerformed
 
+    private void txt_photoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_photoActionPerformed
+        // TODO add your handling code here:
+        
+        
+          JFileChooser file = new JFileChooser();
+          file.setCurrentDirectory(new File(System.getProperty("user.home")));
+          //filter the files
+          FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg","gif","png");
+          file.addChoosableFileFilter(filter);
+          int result = file.showSaveDialog(null);
+           //if the user click on save in Jfilechooser
+          if(result == JFileChooser.APPROVE_OPTION){
+              File selectedFile = file.getSelectedFile();
+              path = selectedFile.getAbsolutePath();
+              
+          }
+           //if the user click on save in Jfilechooser
+
+
+          else if(result == JFileChooser.CANCEL_OPTION){
+              System.out.println("No File Select");
+          }
+        
+   
+    }//GEN-LAST:event_txt_photoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_create;
@@ -369,7 +406,7 @@ public class Create_employee1 extends javax.swing.JPanel {
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_level;
     private javax.swing.JTextField txt_name;
-    private javax.swing.JTextField txt_photo;
+    private javax.swing.JButton txt_photo;
     private javax.swing.JTextField txt_poition;
     private javax.swing.JTextField txt_start;
     private javax.swing.JTextField txt_team;
