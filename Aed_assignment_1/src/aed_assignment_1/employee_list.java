@@ -36,8 +36,15 @@ public class employee_list {
        return newEmployee;
         
     }
+    
+     public employee_profile UpdatenewEmployee(int index){
+        employee_profile newEmployee1 = new employee_profile();
+        employee_list.set(index,newEmployee1);
+       return newEmployee1;
+        
+    }
 
-    public void deleteVitals(employee_profile select_profile) {
+    public void deleteEmployee(employee_profile select_profile) {
         employee_list.remove(select_profile);
         
     }

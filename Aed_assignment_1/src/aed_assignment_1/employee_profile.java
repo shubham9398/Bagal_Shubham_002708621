@@ -113,7 +113,7 @@ public class employee_profile {
     
     @Override
     public String toString(){
-        return start_date;
+        return name;
     }
 
    

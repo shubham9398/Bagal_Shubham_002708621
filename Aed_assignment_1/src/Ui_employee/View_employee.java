@@ -313,7 +313,7 @@ public class View_employee extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) profile_tbl.getModel();
        employee_profile select_profile = (employee_profile) model.getValueAt(selected_row_idx,0);
       
-       e_list.deleteVitals(select_profile);
+       e_list.deleteEmployee(select_profile);
         JOptionPane.showMessageDialog(this,"Vital signs deleted");
           
        populate_table();
@@ -385,6 +385,44 @@ public class View_employee extends javax.swing.JPanel {
        }
         DefaultTableModel model = (DefaultTableModel) profile_tbl.getModel();
        employee_profile select_profile = (employee_profile)model.getValueAt(selected_row_idx,0);
+       
+     String name = txt_name_v.getText()  ;
+     String gender = txt_gender_v.getText();
+     String id=txt_id_v.getText();
+     int age = Integer.parseInt(txt_age_v.getText());
+     String start_date = txt_start_v.getText();
+     String level= txt_level_v.getText();
+     String team_info = txt_team_v.getText();
+     String position = txt_poition_v.getText();
+     long phone = Integer.parseInt(txt_cell_v.getText());
+     String email = txt_email_v.getText();
+       
+     employee_profile ep = e_list.UpdatenewEmployee(selected_row_idx);
+     ep.setName(name);
+     ep.setAge(age);
+     ep.setId(id);
+     ep.setLevel(level);
+     ep.setStart_date(start_date);
+     ep.setTeam_info(team_info);
+     ep.setPosition(position);
+     ep.setPhone(phone);
+     ep.setEmail(email);
+     ep.setGender(gender);
+     
+     
+      /* txt_name_v.setText(name);
+       txt_age_v.setText(String.valueOf(age));
+       txt_poition_v.setText(position);
+       txt_id_v.setText(id);
+       txt_level_v.setText(level);
+       txt_gender_v.setText(gender);
+       txt_email_v.setText(email);
+       txt_cell_v.setText(String.valueOf(phone));
+       txt_start_v.setText(start_date);
+       txt_team_v.setText(team_info);
+       txt_photo_v.setText(select_profile.getPhoto());*/
+       populate_table();
+       
         
     }//GEN-LAST:event_btn_updateActionPerformed
 
