@@ -234,6 +234,7 @@
     <Component class="javax.swing.JTextField" name="txt_age">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_ageActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_ageKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_start">
@@ -251,6 +252,7 @@
     <Component class="javax.swing.JTextField" name="txt_cell">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cellActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cellKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_email">

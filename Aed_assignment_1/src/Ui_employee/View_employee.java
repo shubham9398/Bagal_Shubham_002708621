@@ -7,6 +7,7 @@ package Ui_employee;
 import aed_assignment_1.employee_list;
 import aed_assignment_1.employee_profile;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -76,17 +77,17 @@ public class View_employee extends javax.swing.JPanel {
 
         profile_tbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "NAME", "EMPLOYEE ID", "GENDER"
+                "NAME", "EMPLOYEE ID", "GENDER", "Team "
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -133,6 +134,11 @@ public class View_employee extends javax.swing.JPanel {
                 txt_cell_vActionPerformed(evt);
             }
         });
+        txt_cell_v.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cell_vKeyTyped(evt);
+            }
+        });
 
         txt_email_v.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +177,11 @@ public class View_employee extends javax.swing.JPanel {
         txt_age_v.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_age_vActionPerformed(evt);
+            }
+        });
+        txt_age_v.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_age_vKeyTyped(evt);
             }
         });
 
@@ -405,7 +416,7 @@ public class View_employee extends javax.swing.JPanel {
        
      String name = txt_name_v.getText()  ;
      String gender = txt_gender_v.getText();
-     String id=txt_id_v.getText();
+     String id = txt_id_v.getText();
      int age = Integer.parseInt(txt_age_v.getText());
      String start_date = txt_start_v.getText();
      String level= txt_level_v.getText();
@@ -413,8 +424,43 @@ public class View_employee extends javax.swing.JPanel {
      String position = txt_poition_v.getText();
      long phone = Integer.parseInt(txt_cell_v.getText());
      String email = txt_email_v.getText();
-       
-     employee_profile ep = e_list.UpdatenewEmployee(selected_row_idx);
+      
+    
+     
+      if(name.equals("")){
+        JOptionPane.showMessageDialog(this, "Please Add Name");
+     }
+     else if(gender.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Select Gender..");
+     }
+     else if(id.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add ID..");
+     }
+    
+     else if(start_date.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add Start Date..");
+     }
+     else if(level.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add Level..");
+     }
+     else if(team_info.equals("")){
+        JOptionPane.showMessageDialog(this, "Please Add Team Info..");
+     }
+     else if(position.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add Position..");
+     }
+     
+     
+     else if(email.equals("")){
+        JOptionPane.showMessageDialog(this, "Please Add E-mail..");
+     }
+     
+     
+     else if(!name.equals("")&& !gender.equals("") && !id.equals("") && !start_date.equals("") && 
+             !level.equals("") || level.equals("Manager") || level.equals("Junior") || level.equals("Level 2") || level.equals("Level 3") || level.equals("Senior") 
+             || level.equals("Sr Maneger") || level.equals("Associate") &&!team_info.equals("") && !position.equals("") && !email.equals("") && !team_info.equals("")&& !position.equals("") && !email.equals(""))
+     {
+     employee_profile ep = e_list.addnewEmployee();
      ep.setName(name);
      ep.setAge(age);
      ep.setId(id);
@@ -425,6 +471,8 @@ public class View_employee extends javax.swing.JPanel {
      ep.setPhone(phone);
      ep.setEmail(email);
      ep.setGender(gender);
+     
+
      
      
        txt_name_v.setText(name);
@@ -439,7 +487,7 @@ public class View_employee extends javax.swing.JPanel {
        txt_team_v.setText(team_info);
        lbl_photo_v.setIcon(ResizeImage(select_profile.getPhoto()));
        populate_table();
-       
+     }
         
     }//GEN-LAST:event_btn_updateActionPerformed
 
@@ -452,6 +500,25 @@ public class View_employee extends javax.swing.JPanel {
         
       
     }//GEN-LAST:event_btn_searchActionPerformed
+
+    private void txt_cell_vKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cell_vKeyTyped
+        // TODO add your handling code here:
+         char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter)) || enter== KeyEvent.VK_BACK_SPACE || enter== KeyEvent.VK_DELETE){
+            getToolkit().beep();
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txt_cell_vKeyTyped
+
+    private void txt_age_vKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_age_vKeyTyped
+        // TODO add your handling code here:
+        char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter)) || enter== KeyEvent.VK_BACK_SPACE || enter== KeyEvent.VK_DELETE){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_age_vKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -493,10 +560,12 @@ public class View_employee extends javax.swing.JPanel {
         model.setRowCount(0);
         for(employee_profile profile : e_list.getEmployee_list() ){
             
-            Object[] row = new Object[3];
+            Object[] row = new Object[4];
             row[0] = profile;
             row[1] = profile.getId();
             row[2] = profile.getGender();
+            row[3] = profile.getTeam_info();
+            
             
             model.addRow(row);
         }

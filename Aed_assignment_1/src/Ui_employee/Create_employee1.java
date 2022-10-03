@@ -7,6 +7,7 @@ package Ui_employee;
 import aed_assignment_1.employee_list;
 import aed_assignment_1.employee_profile;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,6 +99,11 @@ public class Create_employee1 extends javax.swing.JPanel {
                 txt_ageActionPerformed(evt);
             }
         });
+        txt_age.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ageKeyTyped(evt);
+            }
+        });
 
         txt_team.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +120,11 @@ public class Create_employee1 extends javax.swing.JPanel {
         txt_cell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cellActionPerformed(evt);
+            }
+        });
+        txt_cell.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cellKeyTyped(evt);
             }
         });
 
@@ -318,10 +329,20 @@ public class Create_employee1 extends javax.swing.JPanel {
      String email = txt_email.getText();
      
      
+     int count = 0;
+        while(phone!=0) {
+            phone = phone/10; 
+            count++;
+        }
+        if(count!= 10){
+            JOptionPane.showMessageDialog(null, "*Please Enter Valid Number");    
+            
+        }
      
      if(name.equals("")){
         JOptionPane.showMessageDialog(this, "Please Add Name");
      }
+     
      else if(gender.equals("")){
          JOptionPane.showMessageDialog(this, "Please Select Gender..");
      }
@@ -332,7 +353,7 @@ public class Create_employee1 extends javax.swing.JPanel {
      else if(start_date.equals("")){
          JOptionPane.showMessageDialog(this, "Please Add Start Date..");
      }
-     else if(level.equals("")){
+     else if(level.equals("-Select Level-")){
          JOptionPane.showMessageDialog(this, "Please Add Level..");
      }
      else if(team_info.equals("")){
@@ -341,15 +362,21 @@ public class Create_employee1 extends javax.swing.JPanel {
      else if(position.equals("")){
          JOptionPane.showMessageDialog(this, "Please Add Position..");
      }
+     else if(path== null){
+         JOptionPane.showMessageDialog(this, "Please Add Image..");
+     }
      
      
      else if(email.equals("")){
         JOptionPane.showMessageDialog(this, "Please Add E-mail..");
+        
+  
      }
      
      
      else if(!name.equals("")&& !gender.equals("") && !id.equals("") && !start_date.equals("") && 
-             !level.equals("") && !team_info.equals("")&& !position.equals("") && !email.equals("") )
+             !level.equals("") && !level.equals("") && !level.equals("") && !level.equals("") && !level.equals("") &&
+             !level.equals("") && !level.equals("") &&!team_info.equals("")&& !position.equals("") && !email.equals("") && !path.equals("") && count==10)
      {
      employee_profile ep = e_list.addnewEmployee();
      ep.setName(name);
@@ -362,10 +389,6 @@ public class Create_employee1 extends javax.swing.JPanel {
      ep.setPhone(phone);
      ep.setEmail(email);
      ep.setGender(gender);
-     if(path== null){
-         JOptionPane.showMessageDialog(this, "Please Add Image..");
-     }
-    
      ep.setPhoto(path);
      
      
@@ -428,6 +451,25 @@ public class Create_employee1 extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_txt_levelActionPerformed
+
+    private void txt_cellKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cellKeyTyped
+        // TODO add your handling code here:
+        char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter)) || enter== KeyEvent.VK_BACK_SPACE || enter== KeyEvent.VK_DELETE){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_cellKeyTyped
+
+    private void txt_ageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ageKeyTyped
+        // TODO add your handling code here:
+        
+         char enter = evt.getKeyChar();
+        if(!(Character.isDigit(enter)) || enter== KeyEvent.VK_BACK_SPACE || enter== KeyEvent.VK_DELETE){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_ageKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -195,14 +195,20 @@
         <Component class="javax.swing.JTable" name="profile_tbl">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="4">
+              <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="NAME" type="java.lang.Object"/>
                 <Column editable="false" title="EMPLOYEE ID" type="java.lang.Object"/>
                 <Column editable="false" title="GENDER" type="java.lang.Object"/>
+                <Column editable="false" title="Team " type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -264,6 +270,7 @@
     <Component class="javax.swing.JTextField" name="txt_cell_v">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cell_vActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cell_vKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_email_v">
@@ -336,6 +343,7 @@
     <Component class="javax.swing.JTextField" name="txt_age_v">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_age_vActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_age_vKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_start_v">
