@@ -424,6 +424,17 @@ public class View_employee extends javax.swing.JPanel {
      String position = txt_poition_v.getText();
      long phone = Integer.parseInt(txt_cell_v.getText());
      String email = txt_email_v.getText();
+     
+     
+     int count = 0;
+        while(phone!=0) {
+            phone = phone/10; 
+            count++;
+        }
+        if(count!= 10){
+            JOptionPane.showMessageDialog(null, "*Please Enter Valid Number");    
+            
+        }
       
     
      
@@ -457,8 +468,8 @@ public class View_employee extends javax.swing.JPanel {
      
      
      else if(!name.equals("")&& !gender.equals("") && !id.equals("") && !start_date.equals("") && 
-             !level.equals("") || level.equals("Manager") || level.equals("Junior") || level.equals("Level 2") || level.equals("Level 3") || level.equals("Senior") 
-             || level.equals("Sr Maneger") || level.equals("Associate") &&!team_info.equals("") && !position.equals("") && !email.equals("") && !team_info.equals("")&& !position.equals("") && !email.equals(""))
+             !level.equals("") && !level.equals("") && !level.equals("") && !level.equals("") && !level.equals("") &&
+             !level.equals("") && !level.equals("") &&!team_info.equals("")&& !position.equals("") && !email.equals("") && !select_profile.getPhoto().equals("") && count==10)
      {
      employee_profile ep = e_list.addnewEmployee();
      ep.setName(name);
@@ -471,6 +482,7 @@ public class View_employee extends javax.swing.JPanel {
      ep.setPhone(phone);
      ep.setEmail(email);
      ep.setGender(gender);
+     ep.setPhoto(select_profile.getPhoto());
      
 
      
