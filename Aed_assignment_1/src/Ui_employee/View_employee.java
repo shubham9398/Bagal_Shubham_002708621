@@ -66,9 +66,9 @@ public class View_employee extends javax.swing.JPanel {
         txt_start_v = new javax.swing.JTextField();
         txt_level_v = new javax.swing.JTextField();
         txt_gender_v = new javax.swing.JTextField();
-        txt_photo_v = new javax.swing.JLabel();
         txt_search = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
+        lbl_photo_v = new javax.swing.JLabel();
 
         label_employee_View.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         label_employee_View.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -174,8 +174,6 @@ public class View_employee extends javax.swing.JPanel {
             }
         });
 
-        txt_search.setText("type here..");
-
         btn_search.setText("Search");
         btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +199,9 @@ public class View_employee extends javax.swing.JPanel {
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addGap(0, 0, Short.MAX_VALUE)
                                             .addComponent(lbl_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(lbl_photo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lbl_photo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGap(48, 48, 48))
                                         .addComponent(lbl_email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lbl_cell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lbl_position, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -226,20 +226,20 @@ public class View_employee extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txt_name_v)
                                     .addComponent(txt_id_v, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txt_photo_v, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbl_photo_v, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(330, 330, 330))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(31, 31, 31)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(label_employee_View, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btn_update)
                                         .addGap(41, 41, 41)
                                         .addComponent(btn_view)
                                         .addGap(37, 37, 37)
-                                        .addComponent(btn_delete))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(btn_delete))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(205, 205, 205)
                         .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,12 +303,10 @@ public class View_employee extends javax.swing.JPanel {
                     .addComponent(txt_email_v, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_email))
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_photo)
-                        .addGap(0, 146, Short.MAX_VALUE))
-                    .addComponent(txt_photo_v, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_photo)
+                    .addComponent(lbl_photo_v, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -338,7 +336,7 @@ public class View_employee extends javax.swing.JPanel {
      txt_cell_v.setText("");
      txt_email_v.setText("");
      txt_gender_v.setText("");
-     txt_photo_v.setIcon(null);
+     lbl_photo_v.setIcon(null);
 
        
        
@@ -388,7 +386,7 @@ public class View_employee extends javax.swing.JPanel {
        txt_cell_v.setText(String.valueOf(select_profile.getPhone()));
        txt_start_v.setText(select_profile.getStart_date());
        txt_team_v.setText(select_profile.getTeam_info());
-       txt_photo_v.setIcon(ResizeImage(select_profile.getPhoto()));
+       lbl_photo_v.setIcon(ResizeImage(select_profile.getPhoto()));
        
        
         
@@ -439,7 +437,7 @@ public class View_employee extends javax.swing.JPanel {
        txt_cell_v.setText(String.valueOf(phone));
        txt_start_v.setText(start_date);
        txt_team_v.setText(team_info);
-       txt_photo_v.setIcon(ResizeImage(select_profile.getPhoto()));
+       lbl_photo_v.setIcon(ResizeImage(select_profile.getPhoto()));
        populate_table();
        
         
@@ -471,6 +469,7 @@ public class View_employee extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_level;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_photo;
+    private javax.swing.JLabel lbl_photo_v;
     private javax.swing.JLabel lbl_position;
     private javax.swing.JLabel lbl_start_date;
     private javax.swing.JLabel lbl_team;
@@ -482,7 +481,6 @@ public class View_employee extends javax.swing.JPanel {
     private javax.swing.JTextField txt_id_v;
     private javax.swing.JTextField txt_level_v;
     private javax.swing.JTextField txt_name_v;
-    private javax.swing.JLabel txt_photo_v;
     private javax.swing.JTextField txt_poition_v;
     private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_start_v;
@@ -507,7 +505,7 @@ public class View_employee extends javax.swing.JPanel {
      public ImageIcon ResizeImage(String ImagePath){
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(txt_photo_v.getWidth(), txt_photo_v.getHeight(), Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(lbl_photo_v.getWidth(), lbl_photo_v.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }

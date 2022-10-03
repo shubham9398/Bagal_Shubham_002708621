@@ -58,7 +58,6 @@ public class Create_employee1 extends javax.swing.JPanel {
         txt_id = new javax.swing.JTextField();
         txt_age = new javax.swing.JTextField();
         txt_start = new javax.swing.JTextField();
-        txt_level = new javax.swing.JTextField();
         txt_team = new javax.swing.JTextField();
         txt_poition = new javax.swing.JTextField();
         txt_cell = new javax.swing.JTextField();
@@ -67,6 +66,7 @@ public class Create_employee1 extends javax.swing.JPanel {
         radio_male = new javax.swing.JRadioButton();
         radio_female = new javax.swing.JRadioButton();
         txt_photo = new javax.swing.JButton();
+        txt_level = new javax.swing.JComboBox<>();
 
         label_employee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_employee.setText("Create Employee Profile");
@@ -153,6 +153,13 @@ public class Create_employee1 extends javax.swing.JPanel {
             }
         });
 
+        txt_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Select Level-", "Junior", "Level 2", "Level 3", "Senior", "Manager", "Sr Maneger", "Associate" }));
+        txt_level.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_levelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,14 +190,6 @@ public class Create_employee1 extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_team, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_level)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_level, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_start_date)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_ID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,7 +210,15 @@ public class Create_employee1 extends javax.swing.JPanel {
                                 .addComponent(radio_male, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radio_female))
-                            .addComponent(txt_age, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_age, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_start_date)
+                            .addComponent(lbl_level))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_start, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txt_level, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(236, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -296,7 +303,7 @@ public class Create_employee1 extends javax.swing.JPanel {
      String name = txt_name.getText()  ;
      String gender;
      String id=txt_id.getText();
-     int age = Integer.parseInt(txt_age.getText());
+     int age = Integer.parseInt(txt_age.getText().trim());
      if(radio_female.isSelected()){
           gender = "Female";
      }
@@ -304,13 +311,46 @@ public class Create_employee1 extends javax.swing.JPanel {
          gender = "Male";
      }
      String start_date = txt_start.getText();
-     String level= txt_level.getText();
+     String level= txt_level.getSelectedItem().toString();
      String team_info = txt_team.getText();
      String position = txt_poition.getText();
-     long phone = Integer.parseInt(txt_cell.getText());
+     long phone = Integer.parseInt(txt_cell.getText().trim());
      String email = txt_email.getText();
      
      
+     
+     if(name.equals("")){
+        JOptionPane.showMessageDialog(this, "Please Add Name");
+     }
+     else if(gender.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Select Gender..");
+     }
+     else if(id.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add ID..");
+     }
+    
+     else if(start_date.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add Start Date..");
+     }
+     else if(level.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add Level..");
+     }
+     else if(team_info.equals("")){
+        JOptionPane.showMessageDialog(this, "Please Add Team Info..");
+     }
+     else if(position.equals("")){
+         JOptionPane.showMessageDialog(this, "Please Add Position..");
+     }
+     
+     
+     else if(email.equals("")){
+        JOptionPane.showMessageDialog(this, "Please Add E-mail..");
+     }
+     
+     
+     else if(!name.equals("")&& !gender.equals("") && !id.equals("") && !start_date.equals("") && 
+             !level.equals("") && !team_info.equals("")&& !position.equals("") && !email.equals("") )
+     {
      employee_profile ep = e_list.addnewEmployee();
      ep.setName(name);
      ep.setAge(age);
@@ -335,7 +375,7 @@ public class Create_employee1 extends javax.swing.JPanel {
      txt_id.setText("");
      txt_age.setText("");
      txt_start.setText("");
-     txt_level.setText("");
+     txt_level.setSelectedIndex(0);
      txt_team.setText("");
      txt_poition.setText("");
      txt_cell.setText("");
@@ -343,6 +383,7 @@ public class Create_employee1 extends javax.swing.JPanel {
      gender_grp.clearSelection();
      
      
+     }
      
         
       
@@ -382,6 +423,12 @@ public class Create_employee1 extends javax.swing.JPanel {
    
     }//GEN-LAST:event_txt_photoActionPerformed
 
+    private void txt_levelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_levelActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_txt_levelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_create;
@@ -404,7 +451,7 @@ public class Create_employee1 extends javax.swing.JPanel {
     private javax.swing.JTextField txt_cell;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_level;
+    private javax.swing.JComboBox<String> txt_level;
     private javax.swing.JTextField txt_name;
     private javax.swing.JButton txt_photo;
     private javax.swing.JTextField txt_poition;

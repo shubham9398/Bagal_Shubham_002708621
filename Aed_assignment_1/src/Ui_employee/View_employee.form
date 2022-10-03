@@ -32,7 +32,10 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           <Component id="lbl_ID" min="-2" pref="478" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="lbl_photo" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lbl_photo" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="lbl_email" alignment="0" max="32767" attributes="0"/>
                                       <Component id="lbl_cell" alignment="0" max="32767" attributes="0"/>
                                       <Component id="lbl_position" alignment="0" max="32767" attributes="0"/>
@@ -63,7 +66,7 @@
                                   <Component id="txt_name_v" max="32767" attributes="0"/>
                                   <Component id="txt_id_v" min="-2" pref="170" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txt_photo_v" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="lbl_photo_v" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
                       </Group>
@@ -72,14 +75,14 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="label_employee_View" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="811" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Component id="btn_update" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                       <Component id="btn_view" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       <Component id="btn_delete" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane1" min="-2" pref="811" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -163,14 +166,11 @@
                   <Component id="lbl_email" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lbl_photo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="146" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="txt_photo_v" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lbl_photo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl_photo_v" alignment="3" min="-2" pref="129" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -344,12 +344,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_gender_v">
     </Component>
-    <Component class="javax.swing.JLabel" name="txt_photo_v">
-    </Component>
     <Component class="javax.swing.JTextField" name="txt_search">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="type here.."/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_search">
       <Properties>
@@ -358,6 +353,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_searchActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_photo_v">
     </Component>
   </SubComponents>
 </Form>

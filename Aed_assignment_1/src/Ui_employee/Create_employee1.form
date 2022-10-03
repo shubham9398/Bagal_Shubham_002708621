@@ -51,16 +51,6 @@
                       <Component id="txt_team" min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lbl_level" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt_level" min="-2" pref="170" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="lbl_start_date" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt_start" min="-2" pref="170" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
                       <Component id="lbl_ID" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="txt_id" min="-2" pref="170" max="-2" attributes="0"/>
@@ -87,6 +77,17 @@
                               <Component id="radio_female" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txt_age" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_start_date" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_level" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txt_start" pref="170" max="32767" attributes="0"/>
+                          <Component id="txt_level" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -237,8 +238,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_start">
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_level">
-    </Component>
     <Component class="javax.swing.JTextField" name="txt_team">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_teamActionPerformed"/>
@@ -296,6 +295,28 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_photoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="txt_level">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="8">
+            <StringItem index="0" value="-Select Level-"/>
+            <StringItem index="1" value="Junior"/>
+            <StringItem index="2" value="Level 2"/>
+            <StringItem index="3" value="Level 3"/>
+            <StringItem index="4" value="Senior"/>
+            <StringItem index="5" value="Manager"/>
+            <StringItem index="6" value="Sr Maneger"/>
+            <StringItem index="7" value="Associate"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_levelActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
