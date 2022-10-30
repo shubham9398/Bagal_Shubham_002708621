@@ -8,6 +8,6 @@ package java_classes;
  *
  * @author shubhambagal
  */
-public class City {
+public class House {
     
 }

@@ -8,7 +8,7 @@ package java_classes;
  *
  * @author shubhambagal
  */
-public class doctor {
+public class Doctor extends Person{
     private String ssn;
     private String city;
     private String community;
@@ -45,6 +45,9 @@ public class doctor {
     public void setHospital(String hospital) {
         this.hospital = hospital;
     }
+    
+   
+    
     
     
     

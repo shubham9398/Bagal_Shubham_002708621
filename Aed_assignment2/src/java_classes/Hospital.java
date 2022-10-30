@@ -8,11 +8,19 @@ package java_classes;
  *
  * @author shubhambagal
  */
-public class Community {
-    
-    private String community;
+public class Hospital {
+     private String community;
     private String city;
-    private String house;
+    private String hospital_name;
+    private String doctor;
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
+    }
 
     public String getCommunity() {
         return community;
@@ -30,21 +38,19 @@ public class Community {
         this.city = city;
     }
 
-    public String getHouse() {
-        return house;
+    public String getHospital_name() {
+        return hospital_name;
     }
 
-    public void setHouse(String house) {
-        this.house = house;
+    public void setHospital_name(String hospital_community) {
+        this.hospital_name = hospital_community;
     }
     
-     @Override
+    @Override
     public String toString(){
-        return community;
+        return hospital_name;
     }
 
     
-
-   
     
 }
